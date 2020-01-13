@@ -1,0 +1,113 @@
+body {
+      font-family:"avenir next", Arial, sans-serif;
+      font-size: 14px;
+      color: #696969;
+    }
+
+    #play-button {
+      position: relative;
+      top: 40px;
+      left: 10px;
+      background: #f08080;
+      padding-right: 26px;
+      border-radius: 3px;
+      border: none;
+      color: white;
+      margin: 0;
+      padding: 0 12px;
+      width: 60px;
+      cursor: pointer;
+      height: 30px;
+    }
+
+    #play-button:hover {
+      background-color: #696969;
+    }
+
+    #datapoints-button {
+      position: relative;
+      top: 40px;
+      left: 410px;
+      background: #f08080;
+      padding-right: 26px;
+      border-radius: 3px;
+      border: none;
+      color: white;
+      margin: 0;
+      padding: 0 12px;
+      width: 140px;
+      cursor: pointer;
+      height: 30px;
+    }
+
+    #datapoints-button:hover {
+      background-color: #696969;
+    }
+
+    .line {
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    .axis {
+        /*stroke: none;*/
+    }
+
+    .coord-axis {
+        stroke: black;
+        stroke-width: 1.5px;
+    }
+
+    .det-axis {
+        stroke: black;
+        stroke-width: 1px;
+    }
+
+    .error-ellipse {
+        fill: none;
+        stroke: black;
+        stroke-width: 2px;
+        stroke-dasharray: 5px 3px;
+    }
+
+    .data-point {
+        fill: gray;
+    }
+
+    .quadrature {
+        fill: none;
+        stroke: blue;
+        stroke-width: 3px;
+    }
+
+    .electric-field {
+        fill: none;
+        stroke-width: 3px;
+        stroke: green;
+    }
+
+    .complex-amplitude {
+        fill: none;
+        stroke-width: 3px;
+        stroke: DarkRed;
+    }
+
+    .time-series {
+        fill: none;
+        stroke-width: 1px;
+        stroke: gray;
+    }
+
+    .envelope-max {
+        fill: none;
+        stroke-width: 2px;
+        stroke: black;
+        stroke-dasharray: 5px 3px;
+    }
+
+    .envelope-min {
+        fill: none;
+        stroke-width: 2px;
+        stroke: black;
+        stroke-dasharray: 5px 3px;
+    }

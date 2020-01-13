@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang = "en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="D. Steinmeyer">
+  <title>Squeezed electromagnetic fields in interactive plots</title>
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="https://unpkg.com/d3-simple-slider@0.2.1/build/d3-simple-slider.js"></script>
+  <link rel="stylesheet" type="text/css" href="sqz-visualisation.css">
+</head>
+
+<body>
+    <div>
+        <div id="sliders" style="float: left">
+            <div id="amplitudeSlider">Amplitude</div>
+            <div id="phaseSlider">Phase</div>
+            <div id="sqzAngleSlider">Squeezing Angle</div>
+            <div id="detectionAngleSlider">Detection Angle</div>
+            <div id="x1Slider">Uncertainty in X1</div>
+            <div id="x2Slider">Uncertainty in X2</div>
+        </div>
+        <div id="vis">
+            <button id="play-button">Play</button>
+            <button id="datapoints-button">Show data points</button>
+        </div>
+        <div id="plot"></div>
+    </div>
+    <div id="buttons">
+        <button id="classicalField-button">Classical Field</button>
+        <button id="vacuumState-button">Vacuum State</button>
+        <button id="coherentState-button">Coherent State</button>
+        <button id="thermalState-button">Thermal State</button>
+        <button id="vacuumSqueezed-button">Vacuum-squeezed State</button>
+        <button id="phaseSqueezed-button">Phase-quadrature-squeezed State</button>
+        <button id="amplitudeSqueezed-button">Amplitude-quadrature-squeezed State</button>
+    </div>
+    <div id="description">
+    <p>Upper left: Electric field in phase space, axes are real and imaginary part of E(t), where E(t) is the complex field amplitude over time.<br>
+    Lower left: Re E(t) = electric field strength over time.<br>
+    Upper right: Phase space rotating with the frequency of the electric field, axes are quadratures of angles 0 and &pi;/2 (= X1 and X2).<br>
+    Lower left: Electric field strength over quadrature angle.<br>
+    Dark Red: (Random) complex amplitude.<br>
+    Green: Electric field strength = real part of complex amplitude.<br>
+    Blue: Detected quadratures = projection of complex amplitude on comoving coordinate axes.<br>
+    Dashed black: Uncertainty around classical field.
+    </p>
+    </div>
+
+    <script src="sqz-visualisation.js"> </script>
+
+</body>
+</html>
+
