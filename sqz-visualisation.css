@@ -4,7 +4,7 @@ body {
       color: #696969;
     }
 
-    #play-button {
+    #js-play-button {
       position: relative;
       top: 40px;
       left: 10px;
@@ -20,11 +20,11 @@ body {
       height: 30px;
     }
 
-    #play-button:hover {
+    #js-play-button:hover {
       background-color: #696969;
     }
 
-    #datapoints-button {
+    #js-datapoints-button {
       position: relative;
       top: 40px;
       left: 410px;
@@ -40,7 +40,7 @@ body {
       height: 30px;
     }
 
-    #datapoints-button:hover {
+    #js-datapoints-button:hover {
       background-color: #696969;
     }
 

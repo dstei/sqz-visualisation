@@ -1,4 +1,4 @@
-    //-------Calculation of data points---------------------------------------
+//-------Calculation of data points---------------------------------------
     var plot_parameters = {"no_samples": 1024,
                            "no_samples_timeSeries": 1536,
                            "std_X1": 0.2,
@@ -102,15 +102,15 @@
     const targetValue = 2*Math.PI;
     const coherentUncertainty = 0.25;
 
-    const playButton = d3.select("#play-button");
-    const datapointsButton = d3.select("#datapoints-button");
-    const classicalFieldButton = d3.select("#classicalField-button");
-    const vacuumStateButton = d3.select("#vacuumState-button");
-    const coherentStateButton = d3.select("#coherentState-button");
-    const thermalStateButton = d3.select("#thermalState-button");
-    const vacuumSqueezedButton = d3.select("#vacuumSqueezed-button");
-    const phaseSqueezedButton = d3.select("#phaseSqueezed-button");
-    const amplitudeSqueezedButton = d3.select("#amplitudeSqueezed-button");
+    const playButton = d3.select("#js-play-button");
+    const datapointsButton = d3.select("#js-datapoints-button");
+    const classicalFieldButton = d3.select("#js-classicalField-button");
+    const vacuumStateButton = d3.select("#js-vacuumState-button");
+    const coherentStateButton = d3.select("#js-coherentState-button");
+    const thermalStateButton = d3.select("#js-thermalState-button");
+    const vacuumSqueezedButton = d3.select("#js-vacuumSqueezed-button");
+    const phaseSqueezedButton = d3.select("#js-phaseSqueezed-button");
+    const amplitudeSqueezedButton = d3.select("#js-amplitudeSqueezed-button");
 
     datapointsButton
         .on("click", function() {
@@ -251,7 +251,7 @@
             plot_parameters.amplitude = val;
             update(plot_parameters);
         });
-    var g = d3.select("div#amplitudeSlider").append("svg")
+    var g = d3.select("div#js-amplitude-slider").append("svg")
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
@@ -277,7 +277,7 @@
             plot_parameters.phase = val;
             update(plot_parameters);
         });
-    g = d3.select("div#phaseSlider").append("svg")
+    g = d3.select("div#js-phase-slider").append("svg")
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
@@ -303,7 +303,7 @@
             plot_parameters.sqz_angle = val;
             update(plot_parameters);
         });
-    g = d3.select("div#sqzAngleSlider").append("svg")
+    g = d3.select("div#js-sqzAngle-slider").append("svg")
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
@@ -329,7 +329,7 @@
             plot_parameters.det_angle = val;
             update_det_angle(val, val + plot_parameters.time * plot_parameters.frequency);
         });
-    g = d3.select("div#detectionAngleSlider").append("svg")
+    g = d3.select("div#js-detectionAngle-slider").append("svg")
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
@@ -352,7 +352,7 @@
             plot_parameters.std_X1 = val;
             update(plot_parameters);
         });
-    g = d3.select("div#x1Slider").append("svg")
+    g = d3.select("div#js-x1-slider").append("svg")
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
@@ -374,7 +374,7 @@
             plot_parameters.std_X2 = val;
             update(plot_parameters);
         });
-    g = d3.select("div#x2Slider").append("svg")
+    g = d3.select("div#js-x2-slider").append("svg")
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
@@ -387,7 +387,7 @@
     const totalwidth = 2*basiclength + margin.left + margin.right + margin.horcenter;
     const totalheight = 1.5*basiclength + margin.top + margin.bottom + margin.vertcenter;
 
-    const svg = d3.select("body").select("div#plot")
+    const svg = d3.select("body").select("div#js-plot")
         .append("svg")
             .attr("width", totalwidth)
             .attr("height", totalheight)
@@ -469,7 +469,7 @@
         .attr("y2", basiclength/4);
 
     rotatingTimeSeries.append("line")
-        .attr("class", "coordaxis")
+        .attr("class", "coord-axis")
         .attr("x1", -basiclength/2)
         .attr("x2", basiclength/2)
         .attr("y1", 0)
@@ -732,7 +732,7 @@
             .attr("rx",x(X1)/2)
             .attr("ry",x(X2)/2);
 
-        selection = d3.select("g.nonRotatingPhaseSpace").select("line.electricField");
+        selection = d3.select("g.nonRotatingPhaseSpace").select("line.electric-field");
         enter = selection.enter();
         selection.merge(enter).attr("x2", Math.cos(time)*x(point[0])- Math.sin(time)*x(point[1]));
         selection = d3.select("g.nonRotatingPhaseSpace").select("line.complex-amplitude");
