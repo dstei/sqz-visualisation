@@ -1,3 +1,5 @@
+*For the interactive animation in action, visit [dstei.github.io/sqz-visualisation](https://dstei.github.io/sqz-visualisation)*
+
 # Visualisation of uncertainties of squeezed light
 ![Example gif of plot area, changing squeezing angle](example.gif?raw=true)
 
@@ -7,7 +9,7 @@ This script visualises uncertainties of squeezed light depending on various para
 
 `sqz-visualisation.css`: Contains style parameters for displaying the plots.
 
-`sqz-visualisation.html`: HTML wrapper file for display of plots.
+`index.html`: HTML wrapper file for display of plots, see [dstei.github.io/sqz-visualisation](https://dstei.github.io/sqz-visualisation).
 
 ## Requirements
 Two additional javascript libraries are loaded/needed: `d3.v4.min.js` and `d3-simple-slider.js`.
