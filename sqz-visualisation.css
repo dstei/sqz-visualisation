@@ -1,14 +1,31 @@
 body {
-      font-family:"avenir next", Arial, sans-serif;
+      font-family:"DejaVu Sans", Arial, sans-serif;
       font-size: 14px;
       color: #696969;
+      max-width: 900px;
+      padding: 10px;
+      margin: auto;
     }
+
+button {
+	margin-top: 4px;
+}
+
+.emph {
+	font-weight: 600;
+}
+
+.description {
+	font-size: 16px;
+	line-height: 1.2;
+}
 
     #js-play-button {
       position: relative;
-      top: 40px;
+      top: -496px;
       left: 10px;
       background: #f08080;
+      z-index: 2;
       padding-right: 26px;
       border-radius: 3px;
       border: none;
@@ -26,9 +43,10 @@ body {
 
     #js-datapoints-button {
       position: relative;
-      top: 40px;
-      left: 410px;
+      top: -496px;
+      left: 390px;
       background: #f08080;
+      z-index: 2;
       padding-right: 26px;
       border-radius: 3px;
       border: none;

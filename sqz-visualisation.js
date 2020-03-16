@@ -97,7 +97,7 @@
 
     //-------Buttons----------------------------------------------------------
     var moving = false;
-    var showDataPoints = false;
+    var toggleDataPoints = 0;
     var currentValue = 0;
     const targetValue = 2*Math.PI;
     const coherentUncertainty = 0.25;
@@ -115,15 +115,9 @@
     datapointsButton
         .on("click", function() {
         var button = d3.select(this);
-        if (button.text() === "Hide data points") {
-          showDataPoints = false;
-          button.text("Show data points");
-        } else {
-          showDataPoints = true;
-          button.text("Hide data points");
-        }
+	toggleDataPoints++;
         changeDataPointsOpacity();
-        //console.log("Show data points: " + showDataPoints);
+        //console.log("Show data points: " + toggleDataPoints);
     });
 
     playButton
@@ -232,8 +226,8 @@
 
     //-------Sliders----------------------------------------------------------
     const slider_width = 200;
-    const div_slider_height = 65;
-    const div_slider_width = slider_width + 100;
+    const div_slider_height = 62;
+    const div_slider_width = slider_width + 70;
 
     const amplitudeSlider = d3.sliderHorizontal()
         .min(0)
@@ -255,7 +249,7 @@
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
-        .attr("transform", "translate(30,30)");
+        .attr("transform", "translate(30,15)");
     g.call(amplitudeSlider);
 
     const phaseSlider = d3.sliderHorizontal()
@@ -281,7 +275,7 @@
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
-        .attr("transform", "translate(30,30)");
+        .attr("transform", "translate(30,15)");
     g.call(phaseSlider);
 
     const sqzAngleSlider = d3.sliderHorizontal()
@@ -307,7 +301,7 @@
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
-        .attr("transform", "translate(30,30)");
+        .attr("transform", "translate(30,15)");
     g.call(sqzAngleSlider);
 
     const detectionAngleSlider = d3.sliderHorizontal()
@@ -333,7 +327,7 @@
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
-        .attr("transform", "translate(30,30)");
+        .attr("transform", "translate(30,15)");
     g.call(detectionAngleSlider);
 
 
@@ -356,7 +350,7 @@
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
-        .attr("transform", "translate(30,30)");
+        .attr("transform", "translate(30,15)");
     g.call(x1Slider);
 
     const x2Slider = d3.sliderHorizontal()
@@ -378,11 +372,11 @@
         .attr("width", div_slider_width)
         .attr("height", div_slider_height)
         .append("g")
-        .attr("transform", "translate(30,30)");
+        .attr("transform", "translate(30,15)");
     g.call(x2Slider);
 
     //-------Plot-------------------------------------------------------------
-    const basiclength = 250;
+    const basiclength = 240;
     const margin = {top: 50, right: 30, bottom: 30, left: 30, horcenter: 60, vertcenter: 60};
     const totalwidth = 2*basiclength + margin.left + margin.right + margin.horcenter;
     const totalheight = 1.5*basiclength + margin.top + margin.bottom + margin.vertcenter;
@@ -411,7 +405,7 @@
 
     svg.append("text")
         .text("created by D. Steinmeyer")
-        .attr("x", totalwidth-115)
+        .attr("x", totalwidth-120)
         .attr("y", totalheight-5)
         .attr("font-size", "9px")
         .attr("fill", "gray")
@@ -829,21 +823,37 @@
 
     function changeDataPointsOpacity() {
         var opacityDataPoints;
-        if(showDataPoints) {
+        var opacityDataStrokes;
+        var opacityUncertainty;
+        if(toggleDataPoints % 3 != 0) {
             opacityDataPoints = 0.5;
+	    opacityDataStrokes = 1.0;
         } else {
             opacityDataPoints = 0.0;
+	    opacityDataStrokes = 0.0;
+	}
+        if(toggleDataPoints % 3 != 2) {
+	    opacityUncertainty = 1.0;
+        } else {
+	    opacityUncertainty = 0.0;
         }
         var selection = d3.selectAll("circle");
         var enter = selection.enter();
         selection.merge(enter).attr("fill-opacity", opacityDataPoints);
 
-        if(showDataPoints) {
-            opacityDataPoints = 1;
-        } else {
-            opacityDataPoints = 0;
-        }
         selection = d3.selectAll("path.time-series");
         enter = selection.enter();
-        selection.merge(enter).attr("stroke-opacity", opacityDataPoints);
+        selection.merge(enter).attr("stroke-opacity", opacityDataStrokes);
+
+	selection = d3.selectAll("path.envelope-max")
+        enter = selection.enter();
+        selection.merge(enter).attr("stroke-opacity", opacityUncertainty);
+
+	selection = d3.selectAll("path.envelope-min")
+        enter = selection.enter();
+        selection.merge(enter).attr("stroke-opacity", opacityUncertainty);
+
+	selection = d3.selectAll("ellipse")
+        enter = selection.enter();
+        selection.merge(enter).attr("stroke-opacity", opacityUncertainty);
     }
