@@ -11,41 +11,41 @@
 
 <body>
 <h1>Squeezed electromagnetic fields in interactive plots</h1>
-    <div>
-        <div id="sliders" style="float: left">
-            <div id="js-amplitude-slider">Amplitude</div>
-            <div id="js-phase-slider">Phase</div>
-            <div id="js-sqzAngle-slider">Squeezing Angle</div>
-            <div id="js-detectionAngle-slider">Detection Angle</div>
-            <div id="js-x1-slider">Uncertainty in X1</div>
-            <div id="js-x2-slider">Uncertainty in X2</div>
-        </div>
-        <div id="vis">
+    <div id="sliders" position="relative" style="float: left">
+	    <div id="js-amplitude-slider">Amplitude<br></div>
+            <div id="js-phase-slider">Phase<br></div>
+            <div id="js-sqzAngle-slider">Squeezing angle<br></div>
+            <div id="js-detectionAngle-slider">Detection angle<br></div>
+            <div id="js-x1-slider">Uncertainty in X1<br></div>
+            <div id="js-x2-slider">Uncertainty in X2<br></div>
+    </div>
+    <div position="relative" style="float: left">
+            <div id="js-plot" style="position:relative; z-index:1;"></div>
             <button id="js-play-button">Play</button>
-            <button id="js-datapoints-button">Show data points</button>
-        </div>
-        <div id="js-plot"></div>
+            <button id="js-datapoints-button">Toggle data points</button>
     </div>
     <div id="buttons">
-        <button id="js-classicalField-button">Classical Field</button>
-        <button id="js-vacuumState-button">Vacuum State</button>
-        <button id="js-coherentState-button">Coherent State</button>
-        <button id="js-thermalState-button">Thermal State</button>
-        <button id="js-vacuumSqueezed-button">Vacuum-squeezed State</button>
-        <button id="js-phaseSqueezed-button">Phase-quadrature-squeezed State</button>
-        <button id="js-amplitudeSqueezed-button">Amplitude-quadrature-squeezed State</button>
+        <button id="js-classicalField-button">Classical field</button>
+        <button id="js-coherentState-button">Coherent state</button>
+	<button id="js-thermalState-button">Thermal state</button><br>
+        <button id="js-phaseSqueezed-button">Phase-quadrature-squeezed state</button>
+	<button id="js-amplitudeSqueezed-button">Amplitude-quadrature-squeezed state</button><br>
+	<button id="js-vacuumState-button">Vacuum state</button>
+	<button id="js-vacuumSqueezed-button">Vacuum-squeezed state</button>
+    <div class="description">
+    <p style="max-width: 600px"><span class="emph">Upper left:</span> Electric field in phase space, axes are real and imaginary part of E(t), where E(t) is the complex field amplitude over time.<br>
+    <span class="emph">Lower left:</span> Re E(t) = electric field strength over time.<br>
+    <span class="emph">Upper right:</span> Phase space rotating with the frequency of the electric field, axes are quadratures of angles 0 and &pi;/2 (= X1 and X2).<br>
+    <span class="emph">Lower left:</span> Electric field strength over quadrature angle.</p>
+    <p style="max-width: 600px"><span class="emph">Dark Red:</span> (Random) complex amplitude.<br>
+    <span class="emph">Green:</span> Electric field strength = real part of complex amplitude.<br>
+    <span class="emph">Blue:</span> Detected quadratures = projection of complex amplitude on comoving coordinate axes.<br>
+    <span class="emph">Dashed black:</span> Uncertainty around classical field.</p>
     </div>
-    <div id="description">
-    <p>Upper left: Electric field in phase space, axes are real and imaginary part of E(t), where E(t) is the complex field amplitude over time.<br>
-    Lower left: Re E(t) = electric field strength over time.<br>
-    Upper right: Phase space rotating with the frequency of the electric field, axes are quadratures of angles 0 and &pi;/2 (= X1 and X2).<br>
-    Lower left: Electric field strength over quadrature angle.<br>
-    Dark Red: (Random) complex amplitude.<br>
-    Green: Electric field strength = real part of complex amplitude.<br>
-    Blue: Detected quadratures = projection of complex amplitude on comoving coordinate axes.<br>
-    Dashed black: Uncertainty around classical field.
-    </p>
+    <div class="description" style="clear:both">
+    <p style="max-width: 600px">Classical field sets uncertainties to zero. Coherent state sets uncertainties to 0.25. Thermal state sets uncertainties to 0.5. Quadrature-squeezed states set squeezing angle to phase and affect uncertainties. Vacuum state sets uncertainties to 0.25 and amplitude to zero. Vacuum-squeezed state affects uncertainties and sets amplitude to zero. Note that all other parameters stay unchanged. Particularly the amplitude might have to be reset to a non-zero value to properly see effects.</p>
     </div>
+    <div style="clear: both"><p><em>For code to create the aninmations, see <a href="https://github.com/dstei/sqz-visualisation">github.com/dstei/sqz-visualisation</a>.</em></p></div>
 
     <script src="https://cdn.jsdelivr.net/gh/dstei/sqz-visualisation/sqz-visualisation.js"> </script>
 
