@@ -62,6 +62,27 @@ button {
       background-color: #696969;
     }
 
+    #js-label-button {
+      position: relative;
+      top: -496px;
+      left: 10px;
+      background: #f08080;
+      z-index: 2;
+      padding-right: 26px;
+      border-radius: 3px;
+      border: none;
+      color: white;
+      margin: 0;
+      padding: 0 12px;
+      width: 110px;
+      cursor: pointer;
+      height: 30px;
+    }
+
+    #js-label-button:hover {
+      background-color: #696969;
+    }
+
     .line {
         stroke: steelblue;
         stroke-width: 1.5px;

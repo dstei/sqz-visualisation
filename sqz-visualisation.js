@@ -104,6 +104,7 @@
 
     const playButton = d3.select("#js-play-button");
     const datapointsButton = d3.select("#js-datapoints-button");
+    const labelButton = d3.select("#js-label-button");
     const classicalFieldButton = d3.select("#js-classicalField-button");
     const vacuumStateButton = d3.select("#js-vacuumState-button");
     const coherentStateButton = d3.select("#js-coherentState-button");
@@ -135,6 +136,22 @@
         }
         //console.log("Slider moving: " + moving);
     });
+
+     labelButton
+         .on("click", function() {
+         var button = d3.select(this);
+         if (button.text() === "Hide labels") {
+           showLabels = false;
+           button.text("Show labels");
+         } else {
+           showLabels = true;
+           button.text("Hide labels");
+         }
+         changeLabelOpacity();
+         console.log("Show labels: " + showLabels);
+     });
+
+
 
     classicalFieldButton
         .on("click", function() {
@@ -517,6 +534,52 @@
     nonRotatingPhaseSpace.append("ellipse")
         .attr("class", "error-ellipse");
 
+    nonRotatingPhaseSpace.append("text").text("Re E(t)")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", basiclength/2.1)
+         .attr("y", basiclength/10);
+    nonRotatingPhaseSpace.append("text").text("Im E(t)")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", -basiclength/4)
+         .attr("y", -basiclength/2.1);
+    rotatingPhaseSpace.append("text").text("X1")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", basiclength/2.1)
+         .attr("y", basiclength/10);
+    rotatingPhaseSpace.append("text").text("X2")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", -basiclength/8)
+         .attr("y", -basiclength/2.1);
+    nonRotatingTimeSeries.append("text").text("t")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", basiclength/2)
+         .attr("y", basiclength/10);
+    nonRotatingTimeSeries.append("text").text("Re E(t)")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", -basiclength/1.8)
+         .attr("y", -basiclength/3.5);
+    rotatingTimeSeries.append("text").text("Quadrature")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", basiclength/4)
+         .attr("y", basiclength/10);
+    rotatingTimeSeries.append("text").text("angle")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", basiclength/2.36)
+         .attr("y", basiclength/6);
+    rotatingTimeSeries.append("text").text("Detection angles")
+         .attr("class", "label")
+         .attr("fill-opacity", 0)
+         .attr("x", -basiclength/1.8)
+         .attr("y", -basiclength/3.5);
+
     var data = get_distribution(plot_parameters);
     rotatingPhaseSpace.append("g")
             .attr("class", "data-points")
@@ -856,4 +919,16 @@
 	selection = d3.selectAll("ellipse")
         enter = selection.enter();
         selection.merge(enter).attr("stroke-opacity", opacityUncertainty);
+    }
+
+    function changeLabelOpacity() {
+        var opacityLabels;
+        if(showLabels) {
+             opacityLabels = 1;
+        } else {
+             opacityLabels = 0;
+        }
+        var selection = d3.selectAll("text.label");
+        enter = selection.enter();
+        selection.merge(enter).attr("fill-opacity", opacityLabels);
     }
